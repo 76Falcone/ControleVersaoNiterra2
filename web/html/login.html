@@ -9,6 +9,20 @@
   <link rel="stylesheet" href="../css/login.css">
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Verifica sessão ANTES de renderizar para evitar flickering -->
+    <script>
+      (function () {
+        try {
+          var session = localStorage.getItem('niterra_user_session');
+          if (session && JSON.parse(session)) {
+            // Usuário já autenticado: redireciona direto para a tela de programas
+            window.location.replace('controleProgramas.html');
+          }
+        } catch (e) {
+          // Ignora erros e permite que a página de login seja exibida
+        }
+      })();
+    </script>
 </head>
 <body class="login-page">
 
