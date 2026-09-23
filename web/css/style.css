@@ -496,6 +496,67 @@ button, input, select, textarea {
   padding: 1.5rem;
 }
 
+/* ─── FORM GROUPS & INPUT WRAPS (MODAIS) ─── */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.45rem;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-wrap .input-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 1.15rem;
+  color: var(--subtle);
+  pointer-events: none;
+  z-index: 1;
+  transition: var(--transition-fast);
+}
+
+.input-wrap input,
+.form-group > input {
+  width: 100%;
+  height: var(--input-h);
+  padding: 0 1rem 0 2.8rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--input-radius);
+  font-size: 0.95rem;
+  color: var(--text);
+  background-color: var(--white);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.form-group > input {
+  padding-left: 1rem;
+}
+
+.input-wrap input:focus,
+.form-group > input:focus {
+  border-color: var(--niterra-green);
+  box-shadow: 0 0 0 3px rgba(0, 200, 117, 0.12);
+}
+
+.input-wrap input:focus + .input-icon,
+.input-wrap input:focus ~ .input-icon {
+  color: var(--niterra-green);
+}
+
 .modal-footer {
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--border);
