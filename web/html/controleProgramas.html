@@ -166,27 +166,20 @@
             <label for="addNomePrograma">Nome do Programa</label>
             <div class="input-wrap">
               <i class="ph ph-cube input-icon"></i>
-              <input type="text" id="addNomePrograma" placeholder="Ex: ControleEstoque_v2.0" required>
+              <input type="text" id="addNomePrograma" placeholder="Ex: PD4000" required>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="addDescricaoPrograma">Descrição do Programa</label>
-            <textarea id="addDescricaoPrograma" rows="3"
-              style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:var(--input-radius); background:var(--white); color:var(--text); outline:none;"
-              placeholder="Descreva a finalidade ou alteração deste programa..."></textarea>
           </div>
 
           <div class="form-group">
             <label for="addStatusPrograma">Status Atual</label>
             <select id="addStatusPrograma" class="select-filter" style="width:100%;">
-              <option value="EM_DESENVOLVIMENTO">EM DESENVOLVIMENTO (Com o desenvolvedor)</option>
               <option value="DISPONIVEL">DISPONÍVEL</option>
+              <option value="EM_DESENVOLVIMENTO">EM DESENVOLVIMENTO (Com o desenvolvedor)</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="addUsuarioPrograma">Desenvolvedor Responsável</label>
+            <label for="addUsuarioPrograma">Analista Responsável</label>
             <select id="addUsuarioPrograma" class="select-filter" style="width:100%;" required>
               <!-- Carregado via JS -->
             </select>
