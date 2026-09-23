@@ -363,11 +363,15 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('statusDescricaoDev').value = prog.descricao || '';
       openModal('modalStatusDesenvolvimento');
     } else {
-      // Altera de EM_DESENVOLVIMENTO para DISPONIVEL
-      prog.status = 'DISPONIVEL';
-      saveProgramas(programas);
-      renderTable();
-      showToast(`Status do programa "${prog.nome}" alterado para Disponível.`, 'info');
+      // Abre modal de confirmação antes de alterar para Disponível
+      const msgEl = document.getElementById('confirmDisponivelMsg');
+      if (msgEl) {
+        msgEl.textContent = `O programa "${prog.nome}" será marcado como Disponível e o desenvolvedor atual será removido.`;
+      }
+      // Armazena o ID temporariamente no botão
+      const btnConfirm = document.getElementById('btnConfirmDisponivel');
+      if (btnConfirm) btnConfirm.dataset.programaId = prog.id;
+      openModal('modalConfirmDisponivel');
     }
   };
 
@@ -397,6 +401,26 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(`Programa "${prog.nome}" removido.`, 'info');
     }
   };
+
+  // Botão Confirmar — Alterar para Disponível
+  const btnConfirmDisp = document.getElementById('btnConfirmDisponivel');
+  if (btnConfirmDisp) {
+    btnConfirmDisp.addEventListener('click', () => {
+      const id = parseInt(btnConfirmDisp.dataset.programaId, 10);
+      const programas = getStoredProgramas();
+      const index = programas.findIndex(p => p.id === id);
+
+      if (index !== -1) {
+        programas[index].status = 'DISPONIVEL';
+        programas[index].desenvolvedor = null;
+
+        saveProgramas(programas);
+        closeModal('modalConfirmDisponivel');
+        renderTable();
+        showToast(`Programa "${programas[index].nome}" agora está Disponível.`, 'success');
+      }
+    });
+  }
 
   // Renderização inicial
   populateUserDropdowns();
