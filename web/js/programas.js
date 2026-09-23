@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Atualiza métricas
-    updateMetrics(programas, users);
+    updateMetrics(programas);
 
     if (!tbody) return;
 
@@ -200,19 +200,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  function updateMetrics(programas, users) {
+  function updateMetrics(programas) {
     const elTotal = document.getElementById('metricTotal');
     const elDev = document.getElementById('metricDev');
     const elDisp = document.getElementById('metricDisponivel');
-    const elDevsCount = document.getElementById('metricDevsCount');
 
     if (elTotal) elTotal.textContent = programas.length;
     if (elDev) elDev.textContent = programas.filter(p => p.status === 'EM_DESENVOLVIMENTO').length;
     if (elDisp) elDisp.textContent = programas.filter(p => p.status === 'DISPONIVEL').length;
-    
-    // Desenvolvedores únicos ativos
-    const activeDevs = new Set(programas.map(p => p.desenvolvedor).filter(Boolean));
-    if (elDevsCount) elDevsCount.textContent = activeDevs.size || users.length;
   }
 
   function escapeHtml(str) {
