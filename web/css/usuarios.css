@@ -1,0 +1,35 @@
+/* ════════════════════════════════════════════════════════════
+   CONTROLE DE VERSÃO NITERRA — STYLING DA TELA DE USUÁRIOS
+   ════════════════════════════════════════════════════════════ */
+
+.user-login-chip {
+  font-family: monospace;
+  font-size: 0.84rem;
+  background-color: var(--off-white);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.user-avatar-md {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--niterra-green), var(--niterra-slate));
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.user-table-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: var(--text);
+}

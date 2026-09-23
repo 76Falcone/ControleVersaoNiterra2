@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuários — Controle de Versão Niterra</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/usuarios.css">
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="../js/darkmode.js"></script>
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <img src="../images/logo.png" alt="Niterra Logo" class="sidebar-logo">
+        <div class="sidebar-brand-text">Controle <span>Versão</span></div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Menu Principal</div>
+        <a href="../../index.html" class="nav-item">
+          <i class="ph ph-squares-four"></i>
+          <span>Programas</span>
+        </a>
+        <a href="usuarios.html" class="nav-item active">
+          <i class="ph ph-users"></i>
+          <span>Usuários</span>
+        </a>
+
+        <div class="nav-section-title" style="margin-top: 1.5rem;">Preferências</div>
+        <button type="button" class="nav-item theme-toggle-btn" style="background:none; border:none; width:100%; text-align:left; cursor:pointer;">
+          <i class="ph ph-moon theme-icon"></i>
+          <span class="theme-label">Modo Escuro</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="user-avatar">A</div>
+          <div class="user-info">
+            <div class="user-name">Carregando...</div>
+            <div class="user-role">Analista</div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="logoutUser()" style="width: 100%;">
+          <i class="ph ph-sign-out"></i> Sair
+        </button>
+      </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="app-main">
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button type="button" class="mobile-menu-btn">
+            <i class="ph ph-list"></i>
+          </button>
+          <h1 class="topbar-title">Gestão de Usuários</h1>
+        </div>
+
+        <div class="topbar-right">
+          <button type="button" class="btn btn-primary" onclick="openModal('modalAddUsuario')">
+            <i class="ph ph-user-plus"></i>
+            Cadastrar Usuário
+          </button>
+        </div>
+      </header>
+
+      <div class="app-content">
+        <!-- Cards de Métricas -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon-wrap metric-slate">
+              <i class="ph ph-users-three"></i>
+            </div>
+            <div class="metric-data">
+              <div class="metric-value" id="metricTotalUsers">0</div>
+              <div class="metric-label">Total de Usuários</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-wrap metric-green">
+              <i class="ph ph-shield-check"></i>
+            </div>
+            <div class="metric-data">
+              <div class="metric-value" id="metricAdmins">0</div>
+              <div class="metric-label">Administradores</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon-wrap metric-info">
+              <i class="ph ph-user-gear"></i>
+            </div>
+            <div class="metric-data">
+              <div class="metric-value" id="metricAnalistas">0</div>
+              <div class="metric-label">Analistas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Barra de Filtros -->
+        <div class="dashboard-actions-bar">
+          <div class="search-filter-wrap">
+            <div class="search-box">
+              <i class="ph ph-magnifying-glass"></i>
+              <input type="text" id="inputSearchUser" placeholder="Buscar por nome ou login...">
+            </div>
+
+            <select id="selectPerfilFilter" class="select-filter">
+              <option value="TODOS">Todos os Perfis</option>
+              <option value="ADMIN">Administrador</option>
+              <option value="ANALISTA">Analista</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tabela de Usuários -->
+        <div class="table-responsive">
+          <table class="custom-table" id="tableUsuarios">
+            <thead>
+              <tr>
+                <th>Registro</th>
+                <th>Nome Completo</th>
+                <th>Login de Acesso</th>
+                <th>Perfil de Permissão</th>
+                <th style="text-align: right;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyUsuarios">
+              <!-- Renderizado via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Cadastrar Usuário -->
+  <div class="modal-backdrop" id="modalAddUsuario">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Cadastrar Novo Usuário</h3>
+        <button type="button" class="modal-close-btn">&times;</button>
+      </div>
+      <form id="formAddUsuario">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="addNomeUsuario">Nome Completo</label>
+            <div class="input-wrap">
+              <i class="ph ph-user input-icon"></i>
+              <input type="text" id="addNomeUsuario" placeholder="Ex: Roberto Oliveira" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="addLoginUsuario">Login de Acesso</label>
+            <div class="input-wrap">
+              <i class="ph ph-at input-icon"></i>
+              <input type="text" id="addLoginUsuario" placeholder="Ex: roberto.oliveira" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="addSenhaUsuario">Senha Inicial</label>
+            <div class="input-wrap">
+              <i class="ph ph-lock-key input-icon"></i>
+              <input type="password" id="addSenhaUsuario" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="addPerfilUsuario">Perfil de Acesso</label>
+            <select id="addPerfilUsuario" class="select-filter" style="width:100%;" required>
+              <option value="ANALISTA">ANALISTA (Desenvolvedor / Acesso Padrão)</option>
+              <option value="ADMIN">ADMIN (Administrador Completo)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-close-modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="ph ph-check"></i> Salvar Usuário
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Editar Usuário -->
+  <div class="modal-backdrop" id="modalEditUsuario">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Editar Usuário</h3>
+        <button type="button" class="modal-close-btn">&times;</button>
+      </div>
+      <form id="formEditUsuario">
+        <input type="hidden" id="editRegistroUsuario">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="editNomeUsuario">Nome Completo</label>
+            <div class="input-wrap">
+              <i class="ph ph-user input-icon"></i>
+              <input type="text" id="editNomeUsuario" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editLoginUsuario">Login de Acesso</label>
+            <div class="input-wrap">
+              <i class="ph ph-at input-icon"></i>
+              <input type="text" id="editLoginUsuario" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editSenhaUsuario">Nova Senha (deixe em branco para manter a atual)</label>
+            <div class="input-wrap">
+              <i class="ph ph-lock-key input-icon"></i>
+              <input type="password" id="editSenhaUsuario" placeholder="••••••••">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editPerfilUsuario">Perfil de Acesso</label>
+            <select id="editPerfilUsuario" class="select-filter" style="width:100%;" required>
+              <option value="ANALISTA">ANALISTA</option>
+              <option value="ADMIN">ADMIN</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-close-modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="ph ph-floppy-disk"></i> Atualizar Usuário
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/script.js"></script>
+  <script src="../js/usuarios.js"></script>
+</body>
+</html>
