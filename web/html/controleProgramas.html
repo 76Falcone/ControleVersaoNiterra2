@@ -305,6 +305,37 @@
     </div>
   </div>
 
+  <!-- Modal: Confirmar Disponível -->
+  <div class="modal-backdrop" id="modalConfirmDisponivel">
+    <div class="modal-container" style="max-width:440px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirmar Disponibilidade</h3>
+        <button type="button" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; align-items:flex-start; gap:1rem;">
+          <div style="flex-shrink:0; width:44px; height:44px; border-radius:50%; background:rgba(0,135,81,0.12); display:flex; align-items:center; justify-content:center;">
+            <i class="ph ph-check-circle" style="font-size:1.5rem; color:var(--niterra-green);"></i>
+          </div>
+          <div>
+            <p style="font-weight:600; color:var(--text); margin-bottom:0.4rem;">Alterar para Disponível?</p>
+            <p id="confirmDisponivelMsg" style="font-size:0.86rem; color:var(--muted); line-height:1.5;"></p>
+            <p style="font-size:0.82rem; color:var(--muted); margin-top:0.6rem;">
+              <i class="ph ph-warning" style="color:#f59e0b;"></i>
+              O campo <strong>Desenvolvedor</strong> será limpo automaticamente.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-close-modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btnConfirmDisponivel" style="background:var(--niterra-green);">
+          <i class="ph ph-check"></i> Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="../js/script.js"></script>
   <script src="../js/programas.js"></script>
