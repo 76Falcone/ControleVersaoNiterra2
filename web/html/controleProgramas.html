@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+
 <body>
 
   <div class="app-layout">
@@ -136,6 +138,7 @@
                 <th>Nome do Programa</th>
                 <th>Descrição</th>
                 <th>Status</th>
+                <th>Responsável</th>
                 <th>Desenvolvedor</th>
                 <th>Data de Envio</th>
                 <th style="text-align: right;">Ações</th>
@@ -169,14 +172,16 @@
 
           <div class="form-group">
             <label for="addDescricaoPrograma">Descrição do Programa</label>
-            <textarea id="addDescricaoPrograma" rows="3" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:var(--input-radius); background:var(--white); color:var(--text); outline:none;" placeholder="Descreva a finalidade ou alteração deste programa..."></textarea>
+            <textarea id="addDescricaoPrograma" rows="3"
+              style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:var(--input-radius); background:var(--white); color:var(--text); outline:none;"
+              placeholder="Descreva a finalidade ou alteração deste programa..."></textarea>
           </div>
 
           <div class="form-group">
             <label for="addStatusPrograma">Status Atual</label>
             <select id="addStatusPrograma" class="select-filter" style="width:100%;">
               <option value="EM_DESENVOLVIMENTO">EM DESENVOLVIMENTO (Com o desenvolvedor)</option>
-              <option value="DISPONIVEL">DISPONÍVEL (Pronto / Liberado)</option>
+              <option value="DISPONIVEL">DISPONÍVEL</option>
             </select>
           </div>
 
@@ -217,7 +222,8 @@
 
           <div class="form-group">
             <label for="editDescricaoPrograma">Descrição</label>
-            <textarea id="editDescricaoPrograma" rows="3" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:var(--input-radius); background:var(--white); color:var(--text); outline:none;"></textarea>
+            <textarea id="editDescricaoPrograma" rows="3"
+              style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:var(--input-radius); background:var(--white); color:var(--text); outline:none;"></textarea>
           </div>
 
           <div class="form-group">
@@ -229,10 +235,18 @@
           </div>
 
           <div class="form-group">
-            <label for="editUsuarioPrograma">Desenvolvedor Responsável</label>
+            <label for="editUsuarioPrograma">Analista Responsável</label>
             <select id="editUsuarioPrograma" class="select-filter" style="width:100%;" required>
               <!-- Carregado via JS -->
             </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editDevNomePrograma">Desenvolvedor Atual</label>
+            <div class="input-wrap">
+              <i class="ph ph-user-code input-icon"></i>
+              <input type="text" id="editDevNomePrograma" placeholder="Nome do desenvolvedor">
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -245,8 +259,46 @@
     </div>
   </div>
 
+  <!-- Pop-up Modal: Alterar para Em Desenvolvimento -->
+  <div class="modal-backdrop" id="modalStatusDesenvolvimento">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Iniciar Desenvolvimento</h3>
+        <button type="button" class="modal-close-btn">&times;</button>
+      </div>
+      <form id="formStatusDesenvolvimento">
+        <input type="hidden" id="statusProgId">
+        <div class="modal-body">
+          <p style="font-size:0.86rem; color:var(--muted); margin-bottom:1.25rem;">
+            Você está alterando este programa para <strong>EM DESENVOLVIMENTO</strong>. Informe o desenvolvedor responsável e a descrição da versão.
+          </p>
+
+          <div class="form-group">
+            <label for="statusNomeDev">Nome do Desenvolvedor</label>
+            <div class="input-wrap">
+              <i class="ph ph-user-code input-icon"></i>
+              <input type="text" id="statusNomeDev" placeholder="Digite o nome do desenvolvedor" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="statusDescricaoDev">Descrição / Motivo das Alterações</label>
+            <textarea id="statusDescricaoDev" rows="3" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--border); border-radius:var(--input-radius); background:var(--white); color:var(--text); outline:none;" placeholder="Descreva os requisitos ou correções em desenvolvimento..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-close-modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="ph ph-wrench"></i> Confirmar Desenvolvimento
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="../js/script.js"></script>
   <script src="../js/programas.js"></script>
 </body>
+
 </html>
