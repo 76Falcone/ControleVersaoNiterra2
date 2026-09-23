@@ -25,10 +25,16 @@ function clearSessionUser() {
 
 function checkAuth(requireAuth = true) {
   const user = getSessionUser();
-  const isLoginPage = window.location.pathname.includes('login.html');
+  const path = window.location.pathname;
+  const href = window.location.href;
+
+  // Considera página de login por pathname OU por nome de arquivo na URL
+  const isLoginPage = path.includes('login.html') || href.includes('login.html');
 
   if (requireAuth && !user && !isLoginPage) {
-    window.location.href = window.location.pathname.includes('/html/') ? 'login.html' : 'html/login.html';
+    // Redireciona somente se realmente não há sessão e não é a página de login
+    const isHtmlSubfolder = path.includes('/html/');
+    window.location.replace(isHtmlSubfolder ? 'login.html' : 'html/login.html');
     return null;
   }
   return user;
@@ -89,8 +95,11 @@ function showToast(message, type = 'success') {
 
 // ─── INITIALIZATION ON DOM READY ───
 document.addEventListener('DOMContentLoaded', () => {
-  // Verifica autenticação para páginas protegidas
-  const user = checkAuth(true);
+  // Verifica autenticação apenas em páginas protegidas (não no login)
+  const isLoginPage = window.location.pathname.includes('login.html') || 
+                      window.location.href.includes('login.html');
+  
+  const user = isLoginPage ? getSessionUser() : checkAuth(true);
 
   if (user) {
     // Atualiza nome do usuário na interface se existir os elementos
