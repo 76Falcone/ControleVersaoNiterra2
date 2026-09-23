@@ -3,7 +3,7 @@
    ════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ─── Niterra Palette (Light Mode) ─── */
+  /* ─── Niterra Palette ─── */
   --niterra-green:        #008751;
   --niterra-green-hover:  #007143;
   --niterra-green-light:  #00C875;
@@ -57,43 +57,4 @@
   --transition-fast:      all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   --transition:           all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow:      all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ════════════════════════════════════════════════════════════
-   DARK MODE — [data-theme="dark"]
-   ════════════════════════════════════════════════════════════ */
-:root[data-theme="dark"],
-html[data-theme="dark"],
-[data-theme="dark"] {
-  --niterra-green:        #00C875;
-  --niterra-green-hover:  #00E084;
-  --niterra-green-light:  #34D399;
-  --niterra-green-pale:   #062E1E;
-
-  --white:                #0F172A;
-  --off-white:            #1E293B;
-  --light:                #0B1222;
-  --light-hover:          #334155;
-  --border:               #334155;
-  --border-strong:        #475569;
-  --text:                 #F8FAFC;
-  --muted:                #94A3B8;
-  --subtle:               #64748B;
-
-  --shadow-sm:            0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md:            0 8px 24px rgba(0, 0, 0, 0.45);
-  --shadow-lg:            0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-glow:          0 0 25px rgba(0, 200, 117, 0.3);
-
-  --success-bg:           #064E3B;
-  --success-text:         #A7F3D0;
-
-  --warning-bg:           #78350F;
-  --warning-text:         #FDE68A;
-
-  --error-bg:             #7F1D1D;
-  --error-text:           #FCA5A5;
-
-  --info-bg:              #1E3A8A;
-  --info-text:            #BFDBFE;
 }
