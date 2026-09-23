@@ -33,7 +33,7 @@
 }
 
 .login-brand-logo {
-  height: 52px;
+  height: 68px;
   width: auto;
   margin-bottom: 2rem;
   object-fit: contain;
@@ -135,7 +135,7 @@
 
 .login-logo-mobile {
   display: none;
-  height: 40px;
+  height: 54px;
   width: auto;
   margin-bottom: 2rem;
 }
