@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function populateUserDropdowns() {
     const users = getStoredUsers();
     
-    // Filtro Responsável/Dev
+    // Filtro Responsável
     if (selectDev) {
       selectDev.innerHTML = `<option value="TODOS">Todos Responsáveis</option>`;
       users.forEach(u => {
@@ -287,6 +287,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // Usa o usuário logado como responsável
+      const sessionUser = getSessionUser();
+      if (!sessionUser) {
+        showToast('Sessão expirada. Faça login novamente.', 'error');
+        return;
+      }
+
       const programas = getStoredProgramas();
       const index = programas.findIndex(p => p.id === id);
 
@@ -294,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         programas[index].status = 'EM_DESENVOLVIMENTO';
         programas[index].desenvolvedor = nomeDev;
         programas[index].descricao = descricaoDev;
+        programas[index].registro_usuario = sessionUser.registro;
 
         saveProgramas(programas);
         closeModal('modalStatusDesenvolvimento');
@@ -343,7 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prog) return;
 
     if (prog.status === 'DISPONIVEL') {
-      // Abre o pop-up para preencher Desenvolvedor e Descrição
+      // Preenche o nome do analista logado automaticamente
+      const sessionUser = getSessionUser();
+      const analistaInput = document.getElementById('statusAnalistaNome');
+      if (analistaInput && sessionUser) {
+        analistaInput.value = sessionUser.nome || sessionUser.login;
+      }
+
       document.getElementById('statusProgId').value = prog.id;
       document.getElementById('statusNomeDev').value = prog.desenvolvedor !== '—' ? (prog.desenvolvedor || '') : '';
       document.getElementById('statusDescricaoDev').value = prog.descricao || '';
