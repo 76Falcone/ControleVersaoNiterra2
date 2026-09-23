@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast(`Bem-vindo, ${foundUser.nome}! Redirecting...`, 'success');
 
           setTimeout(() => {
-            window.location.href = '../index.html';
+            window.location.href = 'controleProgramas.html';
           }, 800);
         } else {
           btnSubmit.disabled = false;
