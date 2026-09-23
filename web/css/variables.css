@@ -1,0 +1,99 @@
+/* ════════════════════════════════════════════════════════════
+   CONTROLE DE VERSÃO NITERRA — DESIGN TOKENS & VARIÁVEIS
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Niterra Palette (Light Mode) ─── */
+  --niterra-green:        #008751;
+  --niterra-green-hover:  #007143;
+  --niterra-green-light:  #00C875;
+  --niterra-green-pale:   #E6F7F0;
+  --niterra-dark:         #0F172A;
+  --niterra-slate:        #1E293B;
+  --niterra-navy:         #0B1628;
+
+  /* ─── Neutral Surfaces ─── */
+  --white:                #FFFFFF;
+  --off-white:            #F8FAFC;
+  --light:                #F1F5F9;
+  --light-hover:          #E2E8F0;
+  --border:               #E2E8F0;
+  --border-strong:        #CBD5E1;
+  --text:                 #0F172A;
+  --muted:                #64748B;
+  --subtle:               #94A3B8;
+
+  /* ─── Status & Feedback ─── */
+  --success:              #10B981;
+  --success-bg:           #ECFDF5;
+  --success-text:         #047857;
+  
+  --warning:              #F59E0B;
+  --warning-bg:           #FFFBEB;
+  --warning-text:         #B45309;
+
+  --error:                #EF4444;
+  --error-bg:             #FEF2F2;
+  --error-text:           #B91C1C;
+
+  --info:                 #3B82F6;
+  --info-bg:              #EFF6FF;
+  --info-text:            #1D4ED8;
+
+  /* ─── Sombras & Elevações ─── */
+  --shadow-sm:            0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md:            0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg:            0 16px 40px rgba(15, 23, 42, 0.12);
+  --shadow-glow:          0 0 20px rgba(0, 200, 117, 0.25);
+
+  /* ─── Layout Constants ─── */
+  --sidebar-w:            260px;
+  --topbar-h:             68px;
+  --input-h:              46px;
+  --input-radius:         10px;
+  --card-radius:          14px;
+
+  /* ─── Transições ─── */
+  --transition-fast:      all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:           all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:      all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ════════════════════════════════════════════════════════════
+   DARK MODE — [data-theme="dark"]
+   ════════════════════════════════════════════════════════════ */
+:root[data-theme="dark"],
+html[data-theme="dark"],
+[data-theme="dark"] {
+  --niterra-green:        #00C875;
+  --niterra-green-hover:  #00E084;
+  --niterra-green-light:  #34D399;
+  --niterra-green-pale:   #062E1E;
+
+  --white:                #0F172A;
+  --off-white:            #1E293B;
+  --light:                #0B1222;
+  --light-hover:          #334155;
+  --border:               #334155;
+  --border-strong:        #475569;
+  --text:                 #F8FAFC;
+  --muted:                #94A3B8;
+  --subtle:               #64748B;
+
+  --shadow-sm:            0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md:            0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg:            0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow:          0 0 25px rgba(0, 200, 117, 0.3);
+
+  --success-bg:           #064E3B;
+  --success-text:         #A7F3D0;
+
+  --warning-bg:           #78350F;
+  --warning-text:         #FDE68A;
+
+  --error-bg:             #7F1D1D;
+  --error-text:           #FCA5A5;
+
+  --info-bg:              #1E3A8A;
+  --info-text:            #BFDBFE;
+}
