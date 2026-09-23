@@ -2,7 +2,7 @@
    CONTROLE DE VERSÃO NITERRA — ESTILOS GLOBAIS E ESTRUTURA
    ════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 /* ─── RESET E BASE ─── */
 *, *::before, *::after {
@@ -73,11 +73,11 @@ button, input, select, textarea {
 }
 
 .sidebar-brand-text {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
 }
 
 .sidebar-brand-text span {
@@ -229,10 +229,11 @@ button, input, select, textarea {
 }
 
 .topbar-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.3px;
 }
 
 .topbar-right {
@@ -467,10 +468,11 @@ button, input, select, textarea {
 }
 
 .modal-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.3px;
 }
 
 .modal-close-btn {
