@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Se o usuário já estiver logado, redireciona para o dashboard
   const currentUser = getSessionUser();
   if (currentUser) {
-    window.location.href = '../index.html';
+    window.location.href = 'controleProgramas.html';
     return;
   }
 
