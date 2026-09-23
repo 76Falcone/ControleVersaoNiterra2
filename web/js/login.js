@@ -3,13 +3,6 @@
    ════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Se o usuário já estiver logado, redireciona para o dashboard
-  const currentUser = getSessionUser();
-  if (currentUser) {
-    window.location.href = 'controleProgramas.html';
-    return;
-  }
-
   // Elementos da página
   const loginForm = document.getElementById('loginForm');
   const inputLogin = document.getElementById('inputLogin');
